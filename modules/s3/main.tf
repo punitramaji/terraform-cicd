@@ -94,17 +94,7 @@ resource "aws_s3_bucket_versioning" "replication_bucket_versioning" {
 }
 
 
-resource "aws_s3_bucket_server_side_encryption_configuration" "replication_bucket_encryption" {
-  provider = aws.replication
-  bucket   = aws_s3_bucket.replication_bucket.bucket
 
-  rule {
-    apply_server_side_encryption_by_default {
-      kms_master_key_id = var.kms_key_arn
-      sse_algorithm     = "aws:kms"
-    }
-  }
-}
 
 resource "aws_s3_bucket_logging" "replication_bucket_logging" {
   provider      = aws.replication
@@ -137,18 +127,6 @@ resource "aws_s3_bucket_versioning" "codepipeline_bucket_versioning" {
   bucket = aws_s3_bucket.codepipeline_bucket.id
   versioning_configuration {
     status = "Enabled"
-  }
-}
-
-
-resource "aws_s3_bucket_server_side_encryption_configuration" "codepipeline_bucket_encryption" {
-  bucket = aws_s3_bucket.codepipeline_bucket.bucket
-
-  rule {
-    apply_server_side_encryption_by_default {
-      kms_master_key_id = var.kms_key_arn
-      sse_algorithm     = "aws:kms"
-    }
   }
 }
 
