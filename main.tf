@@ -15,3 +15,7 @@ module "s3_artifacts_bucket" {
   source       = "./modules/s3"
   project_name = var.project_name
 }
+
+module "codepipeline_kms" {
+  source                = "./modules/kms"
+}
