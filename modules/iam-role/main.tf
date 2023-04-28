@@ -30,7 +30,6 @@ resource "aws_iam_policy" "codepipeline_policy" {
   count       = var.create_new_role ? 1 : 0
   name        = "${var.project_name}-codepipeline-policy"
   description = "Policy to allow codepipeline to execute"
-  tags        = var.tags
   policy      = <<EOF
 {
   "Version": "2012-10-17",
