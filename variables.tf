@@ -14,11 +14,6 @@ variable "codepipeline_iam_role_name" {
   type        = string
 }
 
-variable "project_name" {
-  description = "Unique name for this project"
-  type        = string
-}
-
 variable "s3_bucket_arn" {
   description = "The ARN of the S3 Bucket"
   type        = string
