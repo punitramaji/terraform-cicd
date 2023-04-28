@@ -25,4 +25,5 @@ module "codepipeline_iam_role" {
   project_name               = var.project_name
   create_new_role            = var.create_new_role
   codepipeline_iam_role_name = var.create_new_role == true ? "${var.project_name}-codepipeline-role" : var.codepipeline_iam_role_name
+  s3_bucket_arn              = module.s3_artifacts_bucket.arn
 }
